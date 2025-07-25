@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 async function getTopBooks() {
-  const BASE_URL = "https://books-backend.p.goit.global/books/top-books";
+  const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
 
   const response = await fetch(`${BASE_URL}`);
   if (!response.ok) {
@@ -10,13 +10,13 @@ async function getTopBooks() {
   return await response.json();
 }
 
-const topBooksListEl = document.querySelector(".top-books-list");
-const showMoreBtnEl = document.querySelector(".show-more-btn");
+const topBooksListEl = document.querySelector('.top-books-list');
+const showMoreBtnEl = document.querySelector('.show-more-btn');
 
 function createTopBooksList(books) {
   const markup = books
     .map(
-      (book) => `
+      book => `
         <li class="top-book-item">
             <img
               class="top-book-img"
@@ -38,21 +38,21 @@ function createTopBooksList(books) {
         </li>
       `
     )
-    .join("");
+    .join('');
 
-  topBooksListEl.insertAdjacentHTML("beforeend", markup);
+  topBooksListEl.insertAdjacentHTML('beforeend', markup);
 }
 
-const showShowMoreBtn = () => showMoreBtnEl.classList.remove("is-hidden");
-const hideShowMoreBtn = () => showMoreBtnEl.classList.add("is-hidden");
+const showShowMoreBtn = () => showMoreBtnEl.classList.remove('is-hidden');
+const hideShowMoreBtn = () => showMoreBtnEl.classList.add('is-hidden');
 
 let page = 1;
 let perPage = 4;
 let allTopBooks = [];
 
 getTopBooks()
-  .then((data) => {
-    const topBooks = data.flatMap((category) => category.books);
+  .then(data => {
+    const topBooks = data.flatMap(category => category.books);
     allTopBooks = topBooks;
     const firstTopBook = topBooks.slice(0, 10);
 
@@ -62,9 +62,9 @@ getTopBooks()
       showShowMoreBtn();
     }
   })
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
 
-const onClick = (e) => {
+const onClick = e => {
   page += 1;
 
   const start = 10 + (page - 2) * perPage;
@@ -78,4 +78,4 @@ const onClick = (e) => {
   }
 };
 
-showMoreBtnEl.addEventListener("click", onClick);
+showMoreBtnEl.addEventListener('click', onClick);
