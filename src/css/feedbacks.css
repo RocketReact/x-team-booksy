@@ -1,0 +1,153 @@
+/* Styles for Mobile devices */
+.feedbacks-section {
+    padding: 64px 16px;
+    height: 766px;
+    background: var(--main-background);
+    border: 1px solid #000;
+}
+
+.feedbacks-container {
+    height: 164px;
+
+}
+
+.feedbacks-title {
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: var(--primary-color);
+}
+
+.feedbacks-text {
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--primary-color);
+    margin-top: 24px;
+}
+.feedbacks-text-item{
+    font-family: var(--main-font);
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        color: var(--primary-color);
+        width: 277px;
+        height: 108px;
+}
+.customer-container{
+    display: flex;
+    gap: 16px;
+    width: 277px;
+    height: 48px;
+    margin-top: 24px;
+}
+.customer-img{
+    border-radius: 100%;
+}
+.customer-title{
+    font-family: var(--main-font);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        color: var(--primary-color);
+}
+
+.swiper {
+    width: 341px;
+    margin: 0 auto;
+    height: 314px;
+    touch-action: pan-y;
+    user-select: none;
+    margin-top: 80px;
+
+}
+
+.swiper-wrapper {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.swiper-slide {
+    width: 341px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
+    height: 314px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    border: 1px solid var(--btn-normal-bcg-color);
+    background: var(--btn-normal-bcg-color);
+    fill: #fff;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.swiper-button-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: default;
+    filter: grayscale(70%);
+}
+
+.swiper-buttons-container{
+    display: flex;
+    gap: 16px;
+
+}
+.swiper-controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 17px;
+    margin-top: 32px;
+}
+.swiper-scrollbar {
+
+background-color: #ccc;
+border-radius: 2px;
+position: relative;
+overflow: hidden;
+}
+
+
+.swiper-pagination {
+display: flex;
+    margin-right: 174px;
+    gap: 8px;
+}
+.swiper-pagination-bullet{
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.swiper-pagination-bullet-active{
+    background: #000;
+    opacity: 1;
+}
+
+
+
+
+
+/* Styles for Tablet devices */
+
+
+/* Styles for Desktop devices */
+ 
+    
