@@ -69,6 +69,7 @@
     display: flex;
     padding: 0;
     margin: 0;
+    transition-property: transform;
 }
 
 .swiper-slide {
@@ -114,14 +115,6 @@
     padding-right: 17px;
     margin-top: 32px;
 }
-.swiper-scrollbar {
-
-background-color: #ccc;
-border-radius: 2px;
-position: relative;
-overflow: hidden;
-}
-
 
 .swiper-pagination {
 display: flex;

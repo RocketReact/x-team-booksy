@@ -4,11 +4,10 @@ import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import 'swiper/css/bundle';
 
 
-
-export const swiper = new Swiper('.swiper', {
+export const swiper = new Swiper ('.swiper', {
     direction: 'horizontal',
     loop: false,
-    slidesPerView: 'auto',
+    slidesPerView: 1,
     simulateTouch: true, 
     touchRatio: 1, 
     spaceBetween: 24,
