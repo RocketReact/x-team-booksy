@@ -11,16 +11,18 @@ import '../css/feedbacks.css'
         touchRatio: 1,
         spaceBetween: 0,
         grabCursor: true,
+        watchOverflow: true,
+        speed: 250,
         breakpoints: {
          768: {
              slidesPerView: 2,   
              spaceBetween: 24,
-             slidesPerGroup: 2,
+             slidesPerGroup: 1,
          },
          1200: {
              slidesPerView: 3,
              spaceBetween: 24,
-             slidesPerGroup: 3,
+             slidesPerGroup: 1,
          },
         },
         pagination: {
@@ -40,4 +42,17 @@ import '../css/feedbacks.css'
         modules: [Navigation, Pagination, Keyboard],
     });
 
+// swiper.on('slideChange', () => {
+//   console.log('Current active slide index:', swiper.activeIndex);
+// });
 
+// swiper.on('slideNextTransitionStart', () => console.log('slideNext triggered'));
+// swiper.on('slidePrevTransitionStart', () => console.log('slidePrev triggered'));
+
+// document.querySelector('.custom-swiper-button-next').addEventListener('click', e => {
+//   console.log('click NEXT button');
+// });
+
+// document.querySelector('.custom-swiper-button-prev').addEventListener('click', e => {
+//   console.log('click PREV button');
+// });
