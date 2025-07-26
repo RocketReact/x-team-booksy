@@ -124,13 +124,14 @@
     border-radius: 50%;
     opacity: 0.5;
     transition: 0.3s;
-    margin: 0;
 }
 .swiper-pagination-bullet-active{
     background: #000;
     opacity: 1;
 }
-
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0;
+}
 
 
 
