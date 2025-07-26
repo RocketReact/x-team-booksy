@@ -2,17 +2,15 @@ import Swiper from 'swiper/bundle';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import 'swiper/css/bundle';
 import '../css/feedbacks.css'
-
-document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper('.swiper', {
+ const swiper = new Swiper('.swiper', {
         direction: 'horizontal',
-        loop: true,
-        loopedSlides: 2,
         slidesPerView: 1,
         slidesPerGroup: 1,
+        centeredSlides: false,
+
         simulateTouch: true,
         touchRatio: 1,
-        spaceBetween: 24,
+        spaceBetween: 0,
         grabCursor: true,
         pagination: {
             el: '.custom-swiper-pagination',
@@ -30,5 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         modules: [Navigation, Pagination, Keyboard],
     });
-});
+
 
