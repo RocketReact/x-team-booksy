@@ -8,7 +8,6 @@
 
 .feedbacks-container {
     height: 164px;
-
 }
 
 .feedbacks-title {
@@ -152,6 +151,19 @@
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
+.feedbacks-section{
+    padding-left: 32px;
+    padding-right: 32px;
+    height: 626px;
+    border: none;
+}
+.feedbacks-container {
+    height: 94px;
+}
+
+
+
+
 .swiper {
     width: 705px;
     height: 244px;
@@ -168,6 +180,17 @@
 
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1200px) {
+.feedbacks-section {
+        padding-left: 64px;
+        padding-right: 64px;
+        height: 614px;
+    }
+.feedbacks-container {
+    height: 109px;
+}
+.feedbacks-title{
+    font-size: 48px;
+}
     .swiper {
             width: 1312px;
             height: 217px;
