@@ -151,8 +151,39 @@
 
 
 /* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+.swiper {
+    width: 705px;
+    height: 244px;
+    }
+    .swiper-wrapper {
+        width: auto;
+    }
 
+    .swiper-slide {
+    width: 340px;
+    height: 244px;
+    }
+}
 
 /* Styles for Desktop devices */
+@media only screen and (min-width: 1200px) {
+    .swiper {
+            width: 1312px;
+            height: 217px;
+            margin-top: 80px;
+
+    
+        .swiper-wrapper {
+            width: auto;
+            height: 217px;
+        }
+    
+        .swiper-slide {
+            width: 421px;
+            height: 217px;
+        }
+}
+}
  
     
