@@ -1,13 +1,19 @@
 import axios from 'axios';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 async function getTopBooks() {
   const BASE_URL = 'https://books-backend.p.goit.global/books/top-books';
 
-  const response = await fetch(`${BASE_URL}`);
-  if (!response.ok) {
-    throw new Error(response.status);
+  try {
+    const response = await axios.get(`${BASE_URL}`);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+
+    return [];
   }
-  return await response.json();
 }
 
 const topBooksListEl = document.querySelector('.top-books-list');
@@ -50,31 +56,48 @@ let page = 1;
 let perPage = 4;
 let allTopBooks = [];
 
-getTopBooks()
-  .then(data => {
-    const topBooks = data.flatMap(category => category.books);
-    allTopBooks = topBooks;
-    const firstTopBook = topBooks.slice(0, 10);
+getTopBooks().then(data => {
+  const firstTopBook = data.flatMap(el => el.books);
 
-    createTopBooksList(firstTopBook);
+  const booksWithPrice = firstTopBook.filter(book => book.price > 0);
+  const uniqNameBooks = booksWithPrice.filter(book => book.title);
 
-    if (allTopBooks.length > 10) {
-      showShowMoreBtn();
-    }
-  })
-  .catch(err => console.log(err));
+  allTopBooks = uniqNameBooks;
+
+  const screenWidth = window.innerWidth;
+  const booksForScreen = screenWidth >= 768 ? 24 : 10;
+  const firstTopTenBooks = uniqNameBooks.slice(0, booksForScreen);
+
+  if (firstTopTenBooks.length > 0) {
+    createTopBooksList(firstTopTenBooks);
+  }
+
+  if (uniqNameBooks.length > booksForScreen) {
+    showShowMoreBtn();
+  } else {
+    hideShowMoreBtn();
+  }
+});
 
 const onClick = e => {
+  showMoreBtnEl.blur();
+
   page += 1;
 
-  const start = 10 + (page - 2) * perPage;
+  const screenWidth = window.innerWidth;
+  const booksForScreen = screenWidth >= 768 ? 24 : 10;
+  const start = booksForScreen + (page - 2) * perPage;
   const end = start + perPage;
   const nextBooks = allTopBooks.slice(start, end);
 
   createTopBooksList(nextBooks);
 
-  if (end > allTopBooks.length) {
+  if (end >= allTopBooks.length) {
     hideShowMoreBtn();
+    iziToast.error({
+      message: "We're sorry, but you've reached the end of search results.",
+      position: 'bottomCenter',
+    });
   }
 };
 
