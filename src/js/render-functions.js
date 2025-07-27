@@ -8,6 +8,8 @@ const allCategories = await getCategoryList();
 const categoryName = allCategories.map(category => category.list_name);
 
 export let allTopBooks = [];
+export let page = 1;
+export const perPage = 4;
 
 export function createTopBooksList(books) {
   const markup = books
@@ -47,29 +49,30 @@ async function createCategoryBooksList(arr) {
   dropdownMenuEl.insertAdjacentHTML('beforeend', markup);
 }
 
-getTopBooks().then(data => {
-  const firstTopBook = data.flatMap(el => el.books);
+export function displayBooks(books, isInitialLoad) {
+  topBooksListEl.innerHTML = '';
+  resetPage();
 
-  const booksWithPrice = firstTopBook.filter(book => book.price > 0);
-  const uniqNameBooks = booksWithPrice.filter(book => book.title);
+  const filterBooks = filterDublicateBooks(books);
 
-  allTopBooks.push(...uniqNameBooks);
+  updateAllBooks(filterBooks);
 
   const booksForScreen = getBooksPerScreen();
+  const firstBook = filterBooks.slice(0, booksForScreen);
 
-  const firstTopTenBooks = uniqNameBooks.slice(0, booksForScreen);
-
-  if (firstTopTenBooks.length > 0) {
-    createTopBooksList(firstTopTenBooks);
-    createCategoryBooksList(categoryName);
+  if (firstBook.length > 0) {
+    createTopBooksList(firstBook);
   }
 
-  if (uniqNameBooks.length > booksForScreen) {
+  if (isInitialLoad) {
+    createCategoryBooksList(categoryName);
+  }
+  if (filterBooks.length > booksForScreen) {
     showShowMoreBtn();
   } else {
     hideShowMoreBtn();
   }
-});
+}
 
 export function getBooksPerScreen() {
   const screenWidth = window.innerWidth;
@@ -81,4 +84,42 @@ export const showShowMoreBtn = () =>
 
 export const hideShowMoreBtn = () => showMoreBtnEl.classList.add('is-hidden');
 
+export function getPage() {
+  return page;
+}
+
+export function incrementPage() {
+  page += 1;
+}
+
+export function resetPage() {
+  page = 1;
+}
+
 export { topBooksListEl };
+
+function filterDublicateBooks(books) {
+  const uniqueTitle = new Set();
+
+  return books.filter(book => {
+    if (book.price <= 0) return false;
+    if (!book.title) return false;
+
+    const normalizeTitle = book.title.trim().toLowerCase();
+
+    if (uniqueTitle.has(normalizeTitle)) return false;
+
+    uniqueTitle.add(normalizeTitle);
+    return true;
+  });
+}
+
+export function updateAllBooks(books) {
+  allTopBooks.length = 0;
+  allTopBooks.push(...books);
+}
+
+getTopBooks().then(data => {
+  const initialBooks = data.flatMap(el => el.books);
+  displayBooks(initialBooks, true);
+});
