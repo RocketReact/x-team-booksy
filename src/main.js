@@ -1,8 +1,8 @@
 import 'modern-normalize';
 import './js/events.js';
 import './js/contact-modal.js';
-import './js/header.js';
-import './js/hero-swiper';
-import './js/hero';
+import './js/api.js';
+import './js/render-functions.js';
 import './js/books.js';
-import './js/footer.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
