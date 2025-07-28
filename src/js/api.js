@@ -10,6 +10,8 @@ export async function getCategoryList() {
     return response.data;
   } catch (error) {
     console.log(error);
+    //Безопасный fallback
+    return [];
   }
 }
 
@@ -20,6 +22,7 @@ export async function getTopBooks() {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
@@ -32,6 +35,7 @@ export async function getBooksByCategory(category) {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
@@ -43,6 +47,7 @@ export async function getBooksById(id) {
     return response.data;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
@@ -67,8 +72,7 @@ export async function getTotalBooks() {
         }
       }
     }
-    const totalUniqueBooks = uniqueBookTitles.size;
-    return totalUniqueBooks;
+    return uniqueBookTitles.size;
   } catch (error) {
     console.log(error);
     return 0;
@@ -83,5 +87,6 @@ export async function getCountBooksByCategory(category) {
     return response.data.length;
   } catch (error) {
     console.log(error);
+    return 0;
   }
 }
