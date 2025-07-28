@@ -44,13 +44,6 @@
 
 body {
   font-family: var(--main-font);
-<<<<<<< HEAD
-=======
-  color: var(--primary-color);
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
->>>>>>> 9bf1d4866e3e6fd2df123fe01ed1e0e2731f810d
   background-color: var(--main-background);
   display: flex;
   flex-direction: column;
@@ -63,6 +56,7 @@ body {
 main {
   flex-grow: 1;
 }
+
 main:has(.back-link) {
   text-align: center;
 }
