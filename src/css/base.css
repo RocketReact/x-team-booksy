@@ -1,8 +1,4 @@
 :root {
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
-
   --main-font: 'Rubik', sans-serif;
   --primary-color: #0b0500;
 
@@ -48,12 +44,20 @@
 
 body {
   font-family: var(--main-font);
+<<<<<<< HEAD
+=======
+  color: var(--primary-color);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+>>>>>>> 9bf1d4866e3e6fd2df123fe01ed1e0e2731f810d
   background-color: var(--main-background);
   display: flex;
   flex-direction: column;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
 }
 
 main {
@@ -64,5 +68,6 @@ main:has(.back-link) {
 }
 
 img {
+  width: 100%;
   border-radius: 16px;
 }

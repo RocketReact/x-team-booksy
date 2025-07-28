@@ -1,6 +1,6 @@
 import { getCategoryList, getTopBooks } from './api.js';
 
-const topBooksListEl = document.querySelector('.top-books-list');
+export const topBooksListEl = document.querySelector('.top-books-list');
 const dropdownMenuEl = document.querySelector('.dropdown-menu');
 const showMoreBtnEl = document.querySelector('.show-more-btn');
 
@@ -10,6 +10,32 @@ const categoryName = allCategories.map(category => category.list_name);
 export let allTopBooks = [];
 export let page = 1;
 export const perPage = 4;
+
+// Render functions for displaying books and categories
+export function displayBooks(books, isInitialLoad) {
+  topBooksListEl.innerHTML = '';
+  resetPage();
+
+  const filterBooks = filterDublicateBooks(books);
+
+  updateAllBooks(filterBooks);
+
+  const booksForScreen = getBooksPerScreen();
+  const firstBook = filterBooks.slice(0, booksForScreen);
+
+  if (firstBook.length > 0) {
+    createTopBooksList(firstBook);
+  }
+
+  if (isInitialLoad) {
+    createCategoryBooksList(categoryName);
+  }
+  if (filterBooks.length > booksForScreen) {
+    showShowMoreBtn();
+  } else {
+    hideShowMoreBtn();
+  }
+}
 
 export function createTopBooksList(books) {
   const markup = books
@@ -48,41 +74,19 @@ async function createCategoryBooksList(arr) {
 
   dropdownMenuEl.insertAdjacentHTML('beforeend', markup);
 }
-
-export function displayBooks(books, isInitialLoad) {
+// !
+export async function createShowCase(count, total) {
   topBooksListEl.innerHTML = '';
-  resetPage();
+  const markup = `<p>Showing ${count} of ${total}</p>`;
 
-  const filterBooks = filterDublicateBooks(books);
-
-  updateAllBooks(filterBooks);
-
-  const booksForScreen = getBooksPerScreen();
-  const firstBook = filterBooks.slice(0, booksForScreen);
-
-  if (firstBook.length > 0) {
-    createTopBooksList(firstBook);
-  }
-
-  if (isInitialLoad) {
-    createCategoryBooksList(categoryName);
-  }
-  if (filterBooks.length > booksForScreen) {
-    showShowMoreBtn();
-  } else {
-    hideShowMoreBtn();
-  }
+  showCountEl.insertAdjacentHTML('beforeend', markup);
 }
 
+// Pagination functions
 export function getBooksPerScreen() {
   const screenWidth = window.innerWidth;
   return screenWidth >= 768 ? 24 : 10;
 }
-
-export const showShowMoreBtn = () =>
-  showMoreBtnEl.classList.remove('is-hidden');
-
-export const hideShowMoreBtn = () => showMoreBtnEl.classList.add('is-hidden');
 
 export function getPage() {
   return page;
@@ -96,8 +100,7 @@ export function resetPage() {
   page = 1;
 }
 
-export { topBooksListEl };
-
+// Filter and utility functions
 function filterDublicateBooks(books) {
   const uniqueTitle = new Set();
 
@@ -118,6 +121,11 @@ export function updateAllBooks(books) {
   allTopBooks.length = 0;
   allTopBooks.push(...books);
 }
+
+export const showShowMoreBtn = () =>
+  showMoreBtnEl.classList.remove('is-hidden');
+
+export const hideShowMoreBtn = () => showMoreBtnEl.classList.add('is-hidden');
 
 getTopBooks().then(data => {
   const initialBooks = data.flatMap(el => el.books);

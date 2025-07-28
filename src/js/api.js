@@ -10,7 +10,6 @@ export async function getCategoryList() {
     return response.data;
   } catch (error) {
     console.log(error);
-    //Безопасный fallback
     return [];
   }
 }
