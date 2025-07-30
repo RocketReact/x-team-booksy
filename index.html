@@ -14,48 +14,58 @@
     <script type="module" crossorigin src="/x-team-booksy/index.js"></script>
     <link rel="modulepreload" crossorigin href="/x-team-booksy/assets/vendor-cle4eI2j.js">
     <link rel="stylesheet" crossorigin href="/x-team-booksy/assets/vendor-BTd6p-F9.css">
-    <link rel="stylesheet" crossorigin href="/x-team-booksy/assets/index-_Cco9Wyd.css">
+    <link rel="stylesheet" crossorigin href="/x-team-booksy/assets/index-B_LW6wUg.css">
   </head>
   <body>
-    <header class="header ">
- <div class="container">
-  <nav class="nav-header">
-    <a class="logo-header" href="https://rocketreact.github.io/x-team-booksy">
-      <svg width="84" height="36">
-        <use href="/x-team-booksy/assets/logo-BVGdQgNE.svg#logo"
-        ></use>
-      </svg>
-    </a>
+    <header class="header">
+  <div class="container">
+    <nav class="nav-header">
+      <a class="logo-header" href="https://rocketreact.github.io/x-team-booksy">
+        <svg width="84" height="36">
+          <use href="/x-team-booksy/assets/logo-BVGdQgNE.svg#logo"></use>
+        </svg>
+      </a>
 
-    <button class="burger-header-button" type="button" id="burger-button">
-      <svg class="burger-button-icon" width="24" height="24">
-        <use
-          class="burger-button-use"
-          href="/x-team-booksy/assets/icons-BPIlResT.svg#icon-menu-alt-right"
-        ></use>
-      </svg>
-    </button>
+      <button class="burger-header-button" type="button" id="burger-button">
+        <svg class="burger-button-icon" width="24" height="24">
+          <use
+            class="burger-button-use"
+            href="/x-team-booksy/assets/icons-BPIlResT.svg#icon-menu-alt-right"
+          ></use>
+        </svg>
+      </button>
 
-    <ul class="nav-links-list" id="nav-links">
-      <li class="nav-links-item">
-        <a href="https://rocketreact.github.io/x-team-booksy" class="nav-list-link">Home</a>
-      </li>
-      <li class="nav-links-item">
-        <a href="#books-section" class="nav-list-link">Books</a>
-      </li>
-      <li class="nav-links-item">
-        <a href="#feedbacks-section" class="nav-list-link">Feedbacks</a>
-      </li>
-      <li class="nav-links-item">
-        <a href="#events-section" class="nav-list-link">Events</a>
-      </li>
-      <li class="nav-links-item">
-        <a href="#location-section" class="nav-list-link">Location</a>
-      </li>
-    </ul>
-  </nav>
- </div>
+      <ul class="nav-links-list" id="nav-links">
+        <li class="nav-links-item">
+          <a
+            href="https://rocketreact.github.io/x-team-booksy"
+            class="nav-list-link"
+            >Home</a
+          >
+        </li>
+        <li class="nav-links-item">
+          <a href="#books-section" class="nav-list-link">Books</a>
+        </li>
+        <li class="nav-links-item">
+          <a href="#feedbacks-section" class="nav-list-link">Feedbacks</a>
+        </li>
+        <li class="nav-links-item">
+          <a href="#events-section" class="nav-list-link">Events</a>
+        </li>
+        <li class="nav-links-item">
+          <a href="#location-section" class="nav-list-link">Location</a>
+        </li>
+        <li class="nav-links-item cart-item">
+          <a href="#" class="nav-list-link cart-open-link"
+            >Cart
+            <span class="cart-badge visually-hidden" data-cart-count=""></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+<div class="header-spacer"></div>
 
 
     <main>
@@ -592,8 +602,7 @@
   <div class="mobile-nav-menu-wrapper container">
     <a class="logo-header" href="https://rocketreact.github.io/x-team-booksy">
       <svg width="84" height="36">
-        <use href="/x-team-booksy/assets/logo-BVGdQgNE.svg#logo"
-        ></use>
+        <use href="/x-team-booksy/assets/logo-BVGdQgNE.svg#logo"></use>
       </svg>
     </a>
     <button class="mob-menu-close" type="button" id="mob-close-button">
@@ -604,7 +613,11 @@
 
     <ul class="nav-links-mob-list">
       <li class="nav-links-item">
-        <a href= "https://rocketreact.github.io/x-team-booksy" class="nav-list-mob-link">Home</a>
+        <a
+          href="https://rocketreact.github.io/x-team-booksy"
+          class="nav-list-mob-link"
+          >Home</a
+        >
       </li>
       <li class="nav-links-item">
         <a href="#books-section" class="nav-list-mob-link">Books</a>
@@ -617,6 +630,11 @@
       </li>
       <li class="nav-links-item">
         <a href="#location-section" class="nav-list-mob-link">Location</a>
+      </li>
+      <li class="nav-links-item cart-item">
+        <a href="#" class="nav-list-mob-link cart-open-link"
+          >Cart <span class="cart-badge visually-hidden"></span>
+        </a>
       </li>
     </ul>
   </div>
@@ -770,6 +788,25 @@
 
     <button type="submit" class="submit-btn">Register</button>
   </form>
+</div>
+
+      <div class="modal-backdrop-cart js-backdrop-cart">
+  <div class="modal-window-cart">
+    <button
+      class="modal-close js-close-btn-cart"
+      id="modalClose"
+      aria-label="Close modal"
+    >
+      <svg class="modal-close-button-icon" width="32" height="32">
+        <use
+          class="modal-close-button-icon-use"
+          href="/x-team-booksy/assets/icons-BPIlResT.svg#icon-x"
+        ></use>
+      </svg>
+    </button>
+
+    <ul class="cart-items" id="cart-list"></ul>
+  </div>
 </div>
 
     </main>
